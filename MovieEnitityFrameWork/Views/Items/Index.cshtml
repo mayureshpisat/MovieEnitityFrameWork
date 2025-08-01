@@ -1,0 +1,33 @@
+﻿@model List<MovieEnitityFrameWork.Models.Movie>
+
+<h2>Movies List</h2>
+
+<a asp-controller="Items" asp-action="Create" class="btn btn-primary">Add A Movie</a>
+
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead style="background-color: #f2f2f2;">
+        <tr>
+            <th style="padding: 8px;">Id</th>
+            <th style="padding: 8px;">Title</th>
+            <th style="padding: 8px;">Description</th>
+            <th style="padding: 8px;">Actions</th> <!-- New column for buttons -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td style="padding: 8px;">@movie.Id</td>
+                <td style="padding: 8px;">@movie.Title</td>
+                <td style="padding: 8px;">@movie.Description</td>
+                <td style="padding: 8px;">
+                    <a asp-action="Edit" asp-route-id="@movie.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <form asp-action="Delete" asp-route-id="@movie.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

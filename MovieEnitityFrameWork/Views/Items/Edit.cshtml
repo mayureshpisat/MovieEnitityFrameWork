@@ -1,0 +1,21 @@
+﻿@model MovieEnitityFrameWork.Models.Movie
+
+<h2 style="font-family: Arial; color: #333;">Edit Movie</h2>
+
+<form asp-action="Edit" method="post" style="max-width: 500px; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);">
+    <input type="hidden" asp-for="Id" />
+
+    <div style="margin-bottom: 15px;">
+        <label asp-for="Title" style="display: block; font-weight: bold; margin-bottom: 5px;"></label>
+        <input asp-for="Title" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label asp-for="Description" style="display: block; font-weight: bold; margin-bottom: 5px;"></label>
+        <input asp-for="Description" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+
+    <button type="submit" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        Update
+    </button>
+</form>

@@ -1,0 +1,24 @@
+﻿@model MovieEnitityFrameWork.Models.Movie
+
+<h2 style="font-family: Arial; color: #333;">Add New Movie</h2>
+
+<form asp-action="Create" method="post" style="max-width: 500px; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);">
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Title</label>
+        <input asp-for="Title" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+        <span asp-validation-for="Title" style="color: red; font-size: 0.9em;"></span>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Description</label>
+        <input asp-for="Description" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+        <span asp-validation-for="Description" style="color: red; font-size: 0.9em;"></span>
+
+    </div>
+    <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        Create
+    </button>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
