@@ -4,16 +4,25 @@
 
 <form asp-action="Create" method="post" style="max-width: 500px; background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);">
     <div style="margin-bottom: 15px;">
-        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Title</label>
-        <input asp-for="Title" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+        <label asp-for="Title" style="display: block; font-weight: bold; margin-bottom: 5px;"></label>
+        <input asp-for="Title" class="form-control" />
         <span asp-validation-for="Title" style="color: red; font-size: 0.9em;"></span>
     </div>
-    <div style="margin-bottom: 15px;">
-        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Description</label>
-        <input asp-for="Description" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
-        <span asp-validation-for="Description" style="color: red; font-size: 0.9em;"></span>
 
+    <div style="margin-bottom: 15px;">
+        <label asp-for="Description" style="display: block; font-weight: bold; margin-bottom: 5px;"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" style="color: red; font-size: 0.9em;"></span>
     </div>
+
+    <div style="margin-bottom: 15px;">
+        <label asp-for="DirectorId" style="display: block; font-weight: bold; margin-bottom: 5px;">Director</label>
+        <select asp-for="DirectorId" asp-items="ViewBag.Directors" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+            <option value="">-- Select Director --</option>
+        </select>
+        <span asp-validation-for="DirectorId" style="color: red; font-size: 0.9em;"></span>
+    </div>
+
     <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
         Create
     </button>

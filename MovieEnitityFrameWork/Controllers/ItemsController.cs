@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MovieEnitityFrameWork.Data;
 using MovieEnitityFrameWork.Models;
@@ -23,21 +24,25 @@ namespace MovieEnitityFrameWork.Controllers
 
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Directors = new SelectList(
+            await _dbcontext.Directors.ToListAsync(),"Id","Name");
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(Movie movie)
         {
-            if (ModelState.IsValid == true)
+            if (ModelState.IsValid)
             {
-                _dbcontext.Add(movie);
+                _dbcontext.Movies.Add(movie);
                 await _dbcontext.SaveChangesAsync();
                 return RedirectToAction("Index");
-
             }
+
+            // If validation fails, reload the dropdown:
+            ViewBag.Directors = new SelectList(await _dbcontext.Directors.ToListAsync(), "Id", "Name");
             return View(movie);
         }
 

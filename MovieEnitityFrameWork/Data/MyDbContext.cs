@@ -10,5 +10,17 @@ namespace MovieEnitityFrameWork.Data
         }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Director> Directors { get; set; }
+
+        // Optional Fluent API configuration
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Movie>()
+                .HasOne(m => m.Director)
+                .WithMany(d => d.Movies)
+                .HasForeignKey(m => m.DirectorId)
+                .OnDelete(DeleteBehavior.Cascade); // Or Restrict
+        }
+
     }
 }

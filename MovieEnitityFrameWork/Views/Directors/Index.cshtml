@@ -1,0 +1,39 @@
+﻿@model List<MovieEnitityFrameWork.Models.Director>
+
+<h2>Directors List</h2>
+
+<a asp-controller="Directors" asp-action="Create" class="btn btn-primary">Add A Director</a>
+
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead style="background-color: #f2f2f2;">
+        <tr>
+            <th style="padding: 8px;">Id</th>
+            <th style="padding: 8px;">Name</th>
+            <th style="padding: 8px;">Movies</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var director in Model)
+        {
+            <tr>
+                <td style="padding: 8px;">@director.Id</td>
+                <td style="padding: 8px;">@director.Name</td>
+                <td style="padding: 8px;">
+                    @if (director.Movies != null && director.Movies.Any())
+                    {
+                        <ul>
+                            @foreach (var movie in director.Movies)
+                            {
+                                <li>@movie.Title</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span>No movies</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -16,6 +16,18 @@ namespace MovieEnitityFrameWork.Models
         [StringLength(maximumLength:200, ErrorMessage ="Description cannot be more than 200 characters")]
         public string Description { get; set; }
 
+
+        // Foreign key relation
+        [Required(ErrorMessage = "Please select a director")]
+
+        public int DirectorId { get; set; }
+
+        // Navigation property
+        public Director Director { get; set; }
+
+
+
+
     }
 }
 
