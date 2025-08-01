@@ -66,7 +66,7 @@ namespace MovieEnitityFrameWork.Controllers
                 await _dbcontext.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View(movie);
 
 
         }
